@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard</title>
+</head>
+<body>
+    <h1>Church Dashboard</h1>
+    <p>Welcome, {{ request.user.username }}!</p>
+
+    <h2>Manage Content</h2>
+    <ul>
+        <li><a href="{% url 'announcement_create' %}">Add Announcement</a></li>
+        <li><a href="{% url 'sermon_create' %}">Add Sermon</a></li>
+        <li><a href="{% url 'photo_upload' %}">Upload Photo</a></li>
+    </ul>
+
+    <p><a href="{% url 'logout' %}">Logout</a></p>
+    <p><a href="{% url 'home' %}">Back to Home</a></p>
+</body>
+</html>

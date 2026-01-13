@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block title %}Welcome to Our Church{% endblock %}
+
+{% block content %}
+    <!-- Hero Banner -->
+    <section class="hero">
+        <div class="hero-text">
+            <h2>Welcome to Our Church Family</h2>
+            <p>Join us in worship, fellowship, and service.</p>
+            <a href="{% url 'support' %}" class="btn">Support the Church</a>
+        </div>
+    </section>
+
+    <!-- Announcements Section -->
+    <section class="section">
+        <h3>Latest Announcements</h3>
+        <ul>
+            {% for ann in latest_announcements %}
+                <li><strong>{{ ann.title }}</strong> - {{ ann.published_at }}</li>
+            {% empty %}
+                <li>No announcements yet.</li>
+            {% endfor %}
+        </ul>
+    </section>
+
+    <!-- Sermons Section -->
+    <section class="section">
+        <h3>Recent Sermons</h3>
+        <ul>
+            {% for sermon in latest_sermons %}
+                <li>{{ sermon.title }} by {{ sermon.speaker }} ({{ sermon.date }})</li>
+            {% empty %}
+                <li>No sermons yet.</li>
+            {% endfor %}
+        </ul>
+    </section>
+{% endblock %}

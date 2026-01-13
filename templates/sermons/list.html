@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sermons</title>
+</head>
+<body>
+    <h1>Sermons</h1>
+    <ul>
+        {% for sermon in sermons %}
+            <li>
+                <strong>{{ sermon.title }}</strong> by {{ sermon.speaker }} ({{ sermon.date }})
+                {% if sermon.audio_file %}
+                    <a href="{{ sermon.audio_file.url }}">Listen</a>
+                {% endif %}
+                {% if sermon.video_url %}
+                    <a href="{{ sermon.video_url }}">Watch</a>
+                {% endif %}
+                {% if sermon.notes_pdf %}
+                    <a href="{{ sermon.notes_pdf.url }}">Notes</a>
+                {% endif %}
+            </li>
+        {% empty %}
+            <li>No sermons available.</li>
+        {% endfor %}
+    </ul>
+    <p><a href="{% url 'home' %}">Back to Home</a></p>
+</body>
+</html>

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Announcements</title>
+</head>
+<body>
+    <h1>Announcements</h1>
+    <ul>
+        {% for ann in announcements %}
+            <li><strong>{{ ann.title }}</strong> - {{ ann.body }} ({{ ann.published_at }})</li>
+        {% empty %}
+            <li>No announcements available.</li>
+        {% endfor %}
+    </ul>
+    <p><a href="{% url 'home' %}">Back to Home</a></p>
+</body>
+</html>
